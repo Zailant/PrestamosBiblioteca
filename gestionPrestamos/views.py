@@ -65,4 +65,4 @@ class LibroView(View):
             mensaje={"mensaje":"Libro actualizado exitosamente"}
         else:
             mensaje={"mensaje":"No se encontro el libro"}
-        return JsonResponse(mensaje)
+        return JsonResponse(mensaje)    
