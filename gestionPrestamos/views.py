@@ -66,3 +66,12 @@ class LibroView(View):
         else:
             mensaje={"mensaje":"No se encontro el Libro."}        
         return JsonResponse(mensaje)
+    
+    def delete(self,request,isbn):
+        libro=list(Libro.objects.filter(Isbn=isbn).values())
+        if len(libro)>0:
+            Libro.objects.filter(Isbn=isbn).delete()
+            mensaje={"mensaje":"Libro Eliminado exitosamente."}
+        else:
+            mensaje={"mensaje":"No se encontro el Libro."}        
+        return JsonResponse(mensaje)
