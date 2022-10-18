@@ -23,8 +23,12 @@ class Estudiante(models.Model):
         return self.nombre+" "+self.apellido
     
 class Prestamo(models.Model):
-    id=models.IntegerField(auto_created=True,primary_key=True)    # Crea un Id automaticamente y es la llave primaria 
+    id=models.AutoField(primary_key=True)    # Crea un Id automaticamente y es la llave primaria 
     estudiante=models.ForeignKey(Estudiante, on_delete=models.CASCADE) # Creo la llave foranea con la clase predecesora 
     libro=models.ForeignKey(Libro, on_delete=models.CASCADE) # Con .CASCADE deja eliminar el dato junto con todas sus relaciones
     fecha=models.DateField(auto_now=True)
-    
+
+class Devolucion(models.Model):
+    id=models.AutoField(primary_key=True)
+    prestamo=models.OneToOneField(Prestamo, on_delete=models.CASCADE)
+    fecha=models.DateField(auto_now=True)
